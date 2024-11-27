@@ -1,5 +1,6 @@
 import { REGEXP } from "../utilities/constants.js";
 import { loginUser } from "./login-model.js";
+import { notificationController } from "../notification/notifications-controller.js";
 
 export function loginController(loginForm) {
   
@@ -8,7 +9,6 @@ export function loginController(loginForm) {
   
     const userEmailElement = loginForm.querySelector("#user-mail");
     const passwordElement = loginForm.querySelector("#password");
-    const nameElement = loginForm.querySelector("#name");
     
     const userEmail = userEmailElement.value;
     const password = passwordElement.value;
@@ -19,14 +19,22 @@ export function loginController(loginForm) {
     if (!emailRegExp.test(userEmail)) {
       alert('formato de mail incorrecto')
     } else {
-      handleLoginUser(userEmail, password, name)
+      handleLoginUser(userEmail, password)
     }
   })
 }
 
 async function handleLoginUser(userEmail, password) {
-  const token = await loginUser(userEmail, password);
+  try {
+    const token = await loginUser(userEmail, password);
 
-  localStorage.setItem("jwt", token);
-  window.location.href = "/"
+    localStorage.setItem("jwt", token);
+    window.location.href = "/"
+
+  } catch (error) {
+    const notificationContainer = document.querySelector("#message-container");
+    const { showNotification  } = notificationController(notificationContainer)
+    showNotification ("Error al inciar sesion, usuario y/o password incorrecto","error")
+  }
+
 }

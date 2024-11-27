@@ -153,7 +153,7 @@ body {
 
 .content {
     margin-top: 40px;
-    flex: 1; /* Hace que el contenido ocupe el espacio restante */
+    flex: 1; 
 }
 
 .filters-form {
@@ -193,6 +193,7 @@ body {
 }
 
 .product {
+    margin-top: 100px;
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;    
@@ -229,7 +230,7 @@ body {
     margin-bottom: 5px;
 }
 
-.product-tags {
+.product-tags , product-transation {
     margin-top: 10px;
 }
 
@@ -315,7 +316,7 @@ body {
 }
 
 .product-form-container h2 {
-    margin-top: 40px;
+    margin-top: 50px;
     text-align: center;
     color: #333;
     margin-bottom: 20px;
@@ -593,3 +594,20 @@ body {
     text-decoration: underline;
 }
 
+
+.notification {
+    border: solid 1px;
+    padding: 1rem;
+  }
+  
+  .notification.success {
+    background-color: lightblue;
+    border-color: rgb(0, 172, 230);
+  }
+  
+  .notification.error {
+    background-color: lightcoral;
+    border-color: rgb(242, 8, 8);
+  }
+
+  

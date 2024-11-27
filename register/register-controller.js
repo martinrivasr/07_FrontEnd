@@ -3,8 +3,10 @@ import { createUser } from "./register-model.js";
 
 export function createUserController(form) {
 
-  // 1- obtener los datos del formulario
+  // 1- obtener los datos del 
+
   form.addEventListener("submit", (event) => {
+
     event.preventDefault();
   
     const userEmailElement = form.querySelector("#user-mail");
@@ -20,15 +22,15 @@ export function createUserController(form) {
     // 2- validarlos
     const emailRegExp = new RegExp(REGEXP.mail);
     if (!emailRegExp.test(userEmail)) {
-      errors.push('formato de mail incorrecto')
+      errors.push('formato de mail incorrecto verifique, ')
     }
 
     if (password !== passwordConfirm) {
-      errors.push('las passwords no sin iguales')
+      errors.push('los passwords ingresados no son iguales')
     }
 
     for (const error of errors) {
-      // mostrar notificaciones
+      alert(error)      
     }
 
     if (errors.length === 0) {
@@ -38,7 +40,7 @@ export function createUserController(form) {
 
 }
 
-async function handleCreateUser(userEmail, password) {
+async function handleCreateUser(userEmail, password, userName) {
   // 3- consumir sparrest para crear el usuario
   try {
     await createUser(userEmail, password)
