@@ -114,6 +114,20 @@ body {
     display: block;
 }
 
+.logout-btn {
+    background-color: #218838;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+
 .main-layout {
     display: flex;
     flex-direction: column;
@@ -355,7 +369,7 @@ body {
     background-color: #218838;
 }
 
-.username-label {
+.user-mail-label {
     font-size: 16px;
     color: #333;
     margin-right: 15px;
@@ -471,7 +485,7 @@ body {
     color: #333;
 }
 
-.login-form input[type="text"],
+.login-form input[type="mail"],
 .login-form input[type="password"] {
     padding: 8px;
     font-size: 16px;

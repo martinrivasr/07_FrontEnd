@@ -6,13 +6,16 @@
     <title>Nodepop</title>
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
+<nav>
+    
+</nav>
 <body>
 
-<div class="login-form-container">
+<section class="login-form-container">
     <h2>Iniciar Sesión</h2>
-    <form class="login-form" method="POST">
-        <label for="username">Nombre de usuario:</label>
-        <input type="text" id="username" name="email" value="" placeholder="Nombre de usuario" required>
+    <form class="login-form">
+        <label for="user-mail">Nombre de usuario:</label>
+        <input type="mail" id="user-mail" name="user-mail" value="" placeholder="Nombre de usuario" required>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="Password" required>
@@ -21,8 +24,8 @@
     </form>
     <p class="register-link">¿No tienes una cuenta? <a href="/register.html">Regístrate aquí</a></p>
     <p class="login-error"></p>
-</div>
 
-
+</section>
+<script type="module" src="login.js"></script>
 </body>
 </html>
