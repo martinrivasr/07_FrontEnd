@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketPop</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="/">MarketPop.!!!</a>
+            
+            <div class="pagination-controls">
+                <div class="records-per-page">
+                    <label for="records-per-page">Registros por página:</label>
+                    <select id="records-per-page" name="limit">
+                        <option value="25" >25</option>
+                        <option value="50" >50</option>
+                        <option value="75" >75</option>
+                    </select>
+                </div>
+        
+                <div class="sort-by">
+                    <label for="sort">Ordenar por:</label>
+                    <select id="sort" name="sort" onchange="updateSorting()">
+                        <option value="product" >Nombre</option>
+                        <option value="precio" >Precio</option>
+                        <option value="createdAt" >Fecha de creación</option>
+                        <option value="owner" >Usuario</option>
+                        <option value="tags" >Tags</option>
+                    </select>
+                </div>
+        
+                <div class="sort-direction">
+                    <label for="direction">Dirección:</label>
+                    <select id="direction" name="direction" onchange="updateSorting()">
+                        <option value="asc" >Ascendente</option>
+                        <option value="desc" >Descendente</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="page-controls">
+                <button class="page-btn" >« Anterior</button>
+                <span class="page-info">Página </span>
+                <button class="page-btn" >Siguiente »</button>
+            </div>
+        
+            <div class="total-records">
+                Total de registros: 99
+            </div>
+        
+            <div class="account-menu" id="account-menu">
+                <span class="username-label">Hola <% varname %> bienvenido</span>
+                    <button id="logout-button" class="logout-btn">Logout</button>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Mi cuenta</button>
+                    <div class="dropdown-content">
+                        <a href="/user-data">Configuración</a>
+                        <a href="/user-items">Mis productos</a>
+                        <a href="/create-item">Alta de producto</a>
+                        <a href="#">Salir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </nav>
+    
+    <div class="product-form-container">
+        <h2>Dar de Alta un Producto</h2>
+        <form class="product-form">
+            <!-- Product Name -->
+            <label for="product-name">Nombre del producto:</label>
+            <input type="text" id="product-name" name="product" placeholder="Nombre del producto" required>
+
+            <label for="product-description">Descripcion:</label>
+            <input type="text" id="product-description" name="product" placeholder="Nombre del producto" required>
+
+            <!-- Price -->
+            <label for="product-price">Precio:</label>
+            <input type="number" id="product-price" name="precio" placeholder="Precio en USD" min="0" required>
+
+            <!-- Product Photo -->
+            <label for="product-photo">Foto del producto:</label>
+            <input type="file" id="product-photo" name="picture" accept="image/*" required>
+
+            <!-- Product transation -->
+            <label for="product-transaction">Transaccion</label>
+            <div class="transation">
+                <label><input type="radio" name="transaction" value="Compra"> compra</label>
+                <label><input type="radio" name="transaction" value="Venta"> Venta</label>
+            </div>
+
+            <!-- Product Tags -->
+            <label for="product-tags">Tags del producto:</label>
+            <div class="tag-options">
+                <label><input type="checkbox" name="tags" value="work"> Work</label>
+                <label><input type="checkbox" name="tags" value="lifestyle"> Lifestyle</label>
+                <label><input type="checkbox" name="tags" value="motor"> Motor</label>
+                <label><input type="checkbox" name="tags" value="mobile"> Mobile</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Dar de Alta</button>
+        </form>
+    </div>
+
+    <script type="module" src="usercreateproduct.js"></script>
+
+</body>
+</html>

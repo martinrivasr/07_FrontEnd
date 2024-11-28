@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketPop</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="/">MarketPop.!!!</a>
+            
+            <div class="pagination-controls">
+                <div class="records-per-page">
+                    <label for="records-per-page">Registros por página:</label>
+                    <select id="records-per-page" name="limit">
+                        <option value="25" >25</option>
+                        <option value="50" >50</option>
+                        <option value="75" >75</option>
+                    </select>
+                </div>
+        
+                <div class="sort-by">
+                    <label for="sort">Ordenar por:</label>
+                    <select id="sort" name="sort" onchange="updateSorting()">
+                        <option value="product" >Nombre</option>
+                        <option value="precio" >Precio</option>
+                        <option value="createdAt" >Fecha de creación</option>
+                        <option value="owner" >Usuario</option>
+                        <option value="tags" >Tags</option>
+                    </select>
+                </div>
+        
+                <div class="sort-direction">
+                    <label for="direction">Dirección:</label>
+                    <select id="direction" name="direction" onchange="updateSorting()">
+                        <option value="asc" >Ascendente</option>
+                        <option value="desc" >Descendente</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="page-controls">
+                <button class="page-btn" >« Anterior</button>
+                <span class="page-info">Página </span>
+                <button class="page-btn" >Siguiente »</button>
+            </div>
+        
+            <div class="total-records">
+                Total de registros: 99
+            </div>
+        
+            <div class="account-menu" id="account-menu">
+                <span class="username-label">Hola <% varname %> bienvenido</span>
+                    <button id="logout-button" class="logout-btn">Logout</button>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Mi cuenta</button>
+                    <div class="dropdown-content">
+                        <a href="/user-data">Configuración</a>
+                        <a href="/user-items">Mis productos</a>
+                        <a href="/createproduct.html">Alta de producto</a>
+                        <a href="#">Salir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </nav>
+   
+<div class="main-layout">
+    
+    <section class="content">
+        <p>userid:></a></p>
+
+                <div class="product">
+                     <img src="" alt="Foto del producto" class="product-image"  onerror="this.onerror=null;this.src='./Public/imagen.jpg';">
+                    <div class="product-details">
+                        <h4 class="product-name"></h4>
+                        <p class="product-owner">Propietario: </p>
+                        <p class="product-price">Precio: $</p>
+                        <div class="product-tags">
+                                <span class="tag"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="update-btn">Actualizar</button>
+                            <button class="delete-btn"><a href="/product/delete/">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    </div>
+</div>
+<script type="module" src="userlistproduct.js"></script>
+</body>
+</html>
