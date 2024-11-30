@@ -1,5 +1,5 @@
-import { checkUserAuthentication } from "../utilities/loginIn.js";
-import { buildAuthorizedSession, buildUnauthorizedSession } from "../session/session-view.js";
+import { checkUserAuthentication } from "../shared/utilities/loginIn.js";
+import { buildAuthorizedSession, buildUnauthorizedSession } from "../views/session-view.js";
 
 
 export function homeController(sessionContainer) {

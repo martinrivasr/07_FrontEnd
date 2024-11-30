@@ -1,5 +1,5 @@
-import { REGEXP } from "../utilities/constants.js";
-import { createUser } from "./register-model.js";
+import { REGEXP } from "../shared/utilities/constants.js";
+import { createUser } from "../models/register-model.js";
 
 export function createUserController(form) {
 

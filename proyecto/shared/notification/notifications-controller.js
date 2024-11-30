@@ -7,8 +7,15 @@ export function notificationController(notificationController){
         setTimeout(() => {
             notificationController.innerHTML = "";
         }, 3500);
-    }
+    };
+
+    const handleError = (error) =>{
+        const errorMessage = error instanceof Error ? error.message : error;
+        showNotification(errorMessage,'error');
+    };
+
     return {
-        showNotification
+        showNotification,
+        handleError,
     }
 }

@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketPop</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
+
+
+export function renderNav(){
+
+return `
+ <div class="navbar-container">
             <a class="navbar-brand" href="/">MarketPop.!!!</a>
             
             <div class="pagination-controls">
@@ -53,46 +47,19 @@
             </div>
         
             <div class="account-menu" id="account-menu">
-                <span class="username-label">Hola <% varname %> bienvenido</span>
+                <span class="username-label">Hola home bienvenido</span>
                     <button id="logout-button" class="logout-btn">Logout</button>
                 
                 <div class="dropdown">
                     <button class="dropbtn">Mi cuenta</button>
                     <div class="dropdown-content">
                         <a href="/user-data">Configuración</a>
-                        <a href="/user-items">Mis productos</a>
-                        <a href="/createproduct.html">Alta de producto</a>
+                        <a href="./listPost.html">Mis productos</a>
+                        <a href="./createPost.html">Alta de producto</a>
                         <a href="#">Salir</a>
                     </div>
                 </div>
             </div>
         </div>
-        
-    </nav>
-   
-<div class="main-layout">
-    
-    <section class="content">
-        <p>userid:></a></p>
-
-                <div class="product">
-                     <img src="" alt="Foto del producto" class="product-image"  onerror="this.onerror=null;this.src='./Public/imagen.jpg';">
-                    <div class="product-details">
-                        <h4 class="product-name"></h4>
-                        <p class="product-owner">Propietario: </p>
-                        <p class="product-price">Precio: $</p>
-                        <div class="product-tags">
-                                <span class="tag"></span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="update-btn">Actualizar</button>
-                            <button class="delete-btn"><a href="/product/delete/">Borrar</button>
-                        </div>
-                    </div>
-                </div>
-    </section>
-    </div>
-</div>
-<script type="module" src="userlistproduct.js"></script>
-</body>
-</html>
+`
+}

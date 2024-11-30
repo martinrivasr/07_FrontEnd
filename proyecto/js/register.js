@@ -1,4 +1,4 @@
-import { createUserController } from "./register/register-controller.js"
+import { createUserController } from "../controllers/register-controller.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.querySelector('form')

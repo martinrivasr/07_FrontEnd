@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketPop</title>
+    
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/spinner.css"/>
 </head>
 <body>
     <!-- Navbar -->
@@ -53,15 +55,15 @@
             </div>
         
             <div class="account-menu" id="account-menu">
-                <span class="username-label">Hola <% varname %> bienvenido</span>
+                <span class="username-label">Hola home bienvenido</span>
                     <button id="logout-button" class="logout-btn">Logout</button>
                 
                 <div class="dropdown">
                     <button class="dropbtn">Mi cuenta</button>
                     <div class="dropdown-content">
                         <a href="/user-data">Configuración</a>
-                        <a href="/user-items">Mis productos</a>
-                        <a href="./usercreateproduct.html">Alta de producto</a>
+                        <a href="./Pages/listPost.html">Mis productos</a>
+                        <a href="./Pages/createPost.html">Alta de producto</a>
                         <a href="#">Salir</a>
                     </div>
                 </div>
@@ -99,19 +101,33 @@
 
                 <button type="submit">Aplicar filtros</button>
             </form>
+            <section id="notifications-container">
+
+            </section>
+    
         </aside>
+        <section id="session">
+            
+        </section>
+        <section class="spinner hidden">
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </section>
+
 
         <section id="products-container">
 
         </section>
             
-            <section id="notifications-container">
 
-            </section>
     </div>
 </div>
 
-<script type="module" src="home.js"></script>
+<script type="module" src="./js/home.js"></script>
 
 </body>
 </html>

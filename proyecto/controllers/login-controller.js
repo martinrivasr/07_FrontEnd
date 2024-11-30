@@ -1,6 +1,6 @@
-import { REGEXP } from "../utilities/constants.js";
-import { loginUser } from "./login-model.js";
-import { notificationController } from "../notification/notifications-controller.js";
+import { REGEXP } from "../shared/utilities/constants.js";
+import { loginUser } from "../models/login-model.js"; 
+import { notificationController } from "../shared/notification/notifications-controller.js";
 
 export function loginController(loginForm) {
   
