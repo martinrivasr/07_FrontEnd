@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketPop</title>
     
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/spinner.css"/>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/spinner.css"/>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-
         
     </nav>
    
@@ -44,22 +43,24 @@
 
                 <button type="submit">Aplicar filtros</button>
             </form>
+            <section class="spinner hidden">
+                <div class="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </section>
+              
             <section id="notifications-container">
 
             </section>
-    
         </aside>
         <section id="session">
             
         </section>
-        <section class="spinner hidden">
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </section>
+
+
 
 
         <section id="products-container">
@@ -70,7 +71,7 @@
     </div>
 </div>
 
-<script type="module" src="home.js"></script>
+<script type="module" src="./js/userlistproduct.js"></script>
 
 </body>
 </html>

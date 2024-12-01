@@ -1,10 +1,17 @@
-
-
-export function renderNav(){
-
-
-return `
- <div class="navbar-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketPop</title>
+    
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/spinner.css"/>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
             <a class="navbar-brand" href="/">MarketPop.!!!</a>
             
             <div class="pagination-controls">
@@ -55,12 +62,72 @@ return `
                     <button class="dropbtn">Mi cuenta</button>
                     <div class="dropdown-content">
                         <a href="/user-data">Configuración</a>
-                        <a href="/listPost.html">Mis productos</a>
-                        <a href="/createPost.html">Alta de producto</a>
+                        <a href="./Pages/listPost.html">Mis productos</a>
+                        <a href="./Pages/createPost.html">Alta de producto</a>
                         <a href="#">Salir</a>
                     </div>
                 </div>
             </div>
         </div>
-`
-}
+        
+    </nav>
+   
+
+    
+<div class="main-layout">
+
+    <div class="layout-content">
+       
+        <aside class="filters">
+            <form class="filters-form">
+                <h2>Filtrar productos</h2>
+                <label for="tag">Tag:</label>
+                <select id="tag" name="tag">
+                    <option value="todos">Todos</option>
+                    <option value="work" >Work</option>
+                    <option value="lifestyle" >Lifestyle</option>
+                    <option value="motor" >Motor</option>
+                    <option value="mobile" >Mobile</option>
+                </select>
+
+                <label for="min-price">Precio mínimo:</label>
+                <input type="number" id="min-price" name="min-price" value="">
+
+                <label for="max-price">Precio máximo:</label>
+                <input type="number" id="max-price" name="max-price" value="">
+
+                <label for="product-name">Nombre del producto:</label>
+                <input type="text" id="product-name" name="product-name" value="">
+
+                <button type="submit">Aplicar filtros</button>
+            </form>
+            <section id="notifications-container">
+
+            </section>
+    
+        </aside>
+        <section id="session">
+            
+        </section>
+        <section class="spinner hidden">
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </section>
+
+
+        <section id="products-container">
+
+        </section>
+            
+
+    </div>
+</div>
+
+<script type="module" src="home.js"></script>
+
+</body>
+</html>

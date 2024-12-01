@@ -4,7 +4,9 @@ import { buildAuthorizedSession, buildUnauthorizedSession } from "../views/sessi
 
 export function homeController(sessionContainer) {
     if (checkUserAuthentication()) {
-      const closeSessionButton = sessionContainer.querySelector("#logout-button")
+      
+      const closeSessionButton = sessionContainer.querySelector(".logout-btn")
+      console.log(closeSessionButton)
       closeSessionButton.addEventListener("click", () => {
         localStorage.removeItem("jwt")
         homeController(sessionContainer)

@@ -54,7 +54,7 @@ export const showProductDetail = (productDetail, showOption="detail") => {
         const updateButton = document.createElement('button');
         updateButton.classList.add('update-btn');
         updateButton.textContent = "Modificar";
-        updateButton.setAttribute = ('data-id', productDetail.id)
+        updateButton.setAttribute  ('data-id', productDetail.id)
         
         const deteleButton = document.createElement('button');
         deteleButton.classList.add('delete-btn');
@@ -74,46 +74,57 @@ export function showEmptyProductDetial () {
     return '<h2>No hay productos disponibles</h2>';
 }
 
-export function createPostDetail() {
-            `
-            <h2>Dar de Alta un Producto</h2>
+export const updatePostDetail = (productDetail) => {
+    return `
+        <div class="product-detail">
+            <h2>Modificar un Producto</h2>
             <form class="product-form">
-            <!-- Product Name -->
-            <label for="product-name">Nombre del producto:</label>
-            <input type="text" id="product-name" name="product" placeholder="Nombre del producto" required>
+                <!-- Product Name -->
+                <label for="product-name">Nombre del producto:</label>
+                <input type="text" id="product-name" name="product" placeholder="Nombre del producto" value= "${productDetail.productName}" required>
+    
+                <label for="product-description">Descripcion:</label>
+                <input type="text" id="product-description" name="product" placeholder="Descripción del producto" value="${productDetail.productDescription}" required>
+    
+                <!-- Price -->
+                <label for="product-price">Precio:</label>
+                <input type="number" id="product-price" name="precio" placeholder="Precio en USD" min="0" value= ${productDetail.price} required>
+    
+                <!-- Product Photo -->
+                <label for="product-photo">Foto del producto:</label>
+                <input type="file" id="product-photo" name="picture" accept="image/*" required>
+    
+                <!-- Product transation -->
+                
+                <div class="transation">
+                    <label>
+                        <input type="radio" name="transaction" value="Compra" ${productDetail.transaction === 'Compra' ? 'checked' : ''}> Compra
+                    </label>
+                    <label>
+                        <input type="radio" name="transaction" value="Venta" ${productDetail.transaction === 'Venta' ? 'checked' : ''}> Venta
+                    </label>
+                </div>
 
-            <label for="product-description">Descripcion:</label>
-            <input type="text" id="product-description" name="product" placeholder="Nombre del producto" required>
-
-            <!-- Price -->
-            <label for="product-price">Precio:</label>
-            <input type="number" id="product-price" name="precio" placeholder="Precio en USD" min="0" required>
-
-            <!-- Product Photo -->
-            <label for="product-photo">Foto del producto:</label>
-            <input type="file" id="product-photo" name="picture" accept="image/*" required>
-
-            <!-- Product transation -->
-            <label for="product-transaction">Transaccion</label>
-            <div class="transation">
-                <label><input type="radio" name="transaction" value="Compra"> compra</label>
-                <label><input type="radio" name="transaction" value="Venta"> Venta</label>
-            </div>
-
-            <!-- Product Tags -->
-            <label for="product-tags">Tags del producto:</label>
-            <div class="tag-options">
-                <label><input type="checkbox" name="tags" value="work"> Work</label>
-                <label><input type="checkbox" name="tags" value="lifestyle"> Lifestyle</label>
-                <label><input type="checkbox" name="tags" value="motor"> Motor</label>
-                <label><input type="checkbox" name="tags" value="mobile"> Mobile</label>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="submit-btn">Dar de Alta</button>
-        </form>
-    `
-    console.log("esto es lo que hay cuando se crrea la plantilla", productForm)
-    return productForm
-}
-
+                <!-- Product Tags -->
+                <label for="product-tags">Tags del producto:</label>
+                <div class="tag-options">
+                    <label>
+                        <input type="checkbox" name="tags" value="work" ${productDetail.tags.includes('work') ? 'checked' : ''}> Work
+                    </label>
+                    <label>
+                        <input type="checkbox" name="tags" value="lifestyle" ${productDetail.tags.includes('lifestyle') ? 'checked' : ''}> Lifestyle
+                    </label>
+                    <label>
+                        <input type="checkbox" name="tags" value="motor" ${productDetail.tags.includes('motor') ? 'checked' : ''}> Motor
+                    </label>
+                    <label>
+                        <input type="checkbox" name="tags" value="mobile" ${productDetail.tags.includes('mobile') ? 'checked' : ''}> Mobile
+                    </label>
+                </div>
+        
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Modificar Producto</button>
+            </form>
+        </div>
+    `;
+};

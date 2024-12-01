@@ -71,6 +71,7 @@ export async function getProductsByUser( userId) {
     }
 }
 
+
 export async function removeProduct(productId) {
     const token = localStorage.getItem('jwt');
   
@@ -101,6 +102,29 @@ export async function removeProduct(productId) {
       }
       return product;
 
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
+
+  export async function updateProduct(productId, updateproduct) {
+    const token = localStorage.getItem('jwt');
+  
+    try {
+      const response = await fetch(`${ BASE_URL }/api/tweets/${productId}`, {
+        method: "PUT",
+        body: JSON.stringify(updateproduct), 
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
+      
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.message || "Error desconocido al actualizar.");
+    }
+    
     } catch (error) {
       throw new Error(error.message)
     }

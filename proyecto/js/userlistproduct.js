@@ -2,10 +2,10 @@ import { notificationController } from "../shared/notification/notifications-con
 import { listPostController } from "../controllers/listpost-controller.js";
 import { getCurrentUserInfo } from "../shared/utilities/auth-model.js"
 import { renderNav } from "../views/nav-view.js"
-import { homeController } from "../controllers/home-controller.js";
-const navbarContainer = document.querySelector(".navbar");
+
 
 document.addEventListener("DOMContentLoaded", async () => {
+
   const navbarContainer = document.querySelector(".navbar");
   navbarContainer.innerHTML = renderNav();
 
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("El contenedor de la sesión no se encontró.");
     }
 }, 0);
-
   
   const productsContainer = document.querySelector("#products-container");
   const notificationsContainer = document.querySelector("#notifications-container");
