@@ -18,7 +18,7 @@ MarketPop es una aplicación web diseñada para gestionar publicaciones de produ
 
 ## Tecnologías utilizadas
 - **Frontend**:
-  - HTML5, CSS3 y JavaScript ES6+.
+  - HTML5, CSS3 y JavaScript
   - Librerías externas: `chance.js` para generación de datos aleatorios.
 - **Backend**:
   - Conexión a una API RESTful para gestionar usuarios y productos.
