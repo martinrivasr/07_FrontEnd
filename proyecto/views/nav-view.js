@@ -1,12 +1,15 @@
 
 
-export function renderNav(){
+export function renderNav(username = "Usuario"){
 
 
 return `
  <div class="navbar-container">
-            <a class="navbar-brand" href="/">MarketPop.!!!</a>
-            
+
+            <a class="navbar-brand" href="/">
+                
+                MarketPop.!!!
+            </a>
             <div class="pagination-controls">
                 <div class="records-per-page">
                     <label for="records-per-page">Registros por página:</label>
@@ -46,9 +49,15 @@ return `
             <div class="total-records">
                 Total de registros: 99
             </div>
-        
+            
+            <div class="home-icon">
+                <a href="/home.html">
+                    <img src="/assets/home-icon.svg" alt="Home" class="home-icon" href="/" />
+                 </a>
+            </div>
+
             <div class="account-menu" id="account-menu">
-                <span class="username-label">Hola home bienvenido</span>
+                <span class="username-label">Hola  ${username} bienvenido</span>
                     <button id="logout-button" class="logout-btn">Logout</button>
                 
                 <div class="dropdown">

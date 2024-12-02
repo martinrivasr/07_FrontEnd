@@ -91,10 +91,11 @@ export async function removeProduct(productId) {
     }
   }
 
-  export async function getProduct(productId) {
+  export async function getProductbyID(productId) {
   
     try {
       const response = await fetch(`${ BASE_URL }/api/tweets/${productId}?_expand=user`);
+      console.log(`${ BASE_URL }/api/tweets/${productId}?_expand=user`)
       const product = await response.json();
       
       if (!response.ok) {

@@ -1,10 +1,10 @@
-export const showProductDetail = (productDetail, showOption="detail") => {
+export const showProductDetail = (productDetail, showOption="detail", currentUserId = 0) => {
 
     const newProductDetail = document.createElement('div');
     newProductDetail.classList.add('product');
 
     const creationDate = new Date(productDetail.updatedAt);
-
+    
     const tagsHTML = productDetail.tags
         .map(tag => `<span class="tag">${tag}</span>`)
         .join('');
@@ -33,42 +33,41 @@ export const showProductDetail = (productDetail, showOption="detail") => {
         </div>
     `;
 
-   if (showOption === "detail"){
+    const productActions = document.createElement("div");
+    productActions.classList.add("product-actions");
 
+    // Botón Comprar/Vender
+    if (showOption === "detail") {
         const buttonText = productDetail.transaction === "Venta" ? "Comprar" : "Vender";
-
-        const productActions = document.createElement('div'); 
-        productActions.classList.add('product-actions');
-        const actionButton = document.createElement('button'); 
-        actionButton.classList.add('transaction-btn');
+        const actionButton = document.createElement("button");
+        actionButton.classList.add("transaction-btn");
         actionButton.textContent = buttonText;
-        
-        productActions.appendChild(actionButton);   
 
-        newProductDetail.appendChild(productLink); 
-        newProductDetail.appendChild(productActions); 
-   } else {
-        const productActions = document.createElement('div');
-        productActions.classList.add('product-actions');
-        
-        const updateButton = document.createElement('button');
-        updateButton.classList.add('update-btn');
+        productActions.appendChild(actionButton);
+    }
+
+  
+    if (currentUserId && productDetail.userId === currentUserId) {
+        const updateButton = document.createElement("button");
+        updateButton.classList.add("update-btn");
         updateButton.textContent = "Modificar";
-        updateButton.setAttribute  ('data-id', productDetail.id)
-        
-        const deteleButton = document.createElement('button');
-        deteleButton.classList.add('delete-btn');
-        deteleButton.textContent = "Borrar";
-        deteleButton.setAttribute('data-id', productDetail.id)
+        updateButton.setAttribute("data-id", productDetail.id);
 
-        productActions.appendChild(updateButton);    
-        productActions.appendChild(deteleButton);
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-btn");
+        deleteButton.textContent = "Borrar";
+        deleteButton.setAttribute("data-id", productDetail.id);
 
-        newProductDetail.appendChild(productLink);
-        newProductDetail.appendChild(productActions);
-   }
+        productActions.appendChild(updateButton);
+        productActions.appendChild(deleteButton);
+    }
+
+    newProductDetail.appendChild(productLink);
+    newProductDetail.appendChild(productActions);
+
     return newProductDetail;
 };
+
 
 export function showEmptyProductDetial () {
     return '<h2>No hay productos disponibles</h2>';
@@ -124,6 +123,7 @@ export const updatePostDetail = (productDetail) => {
         
                 <!-- Submit Button -->
                 <button type="submit" class="submit-btn">Modificar Producto</button>
+                <button type="button" class="cancel-btn">Cancelar</button>
             </form>
         </div>
     `;

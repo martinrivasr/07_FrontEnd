@@ -1,5 +1,5 @@
-import { createNewProduct, getAllProducts, getProductsByUser, removeProduct, getProduct, updateProduct } from "../models/post-model.js"
-import { showProductDetail, showEmptyProductDetial, updatePostDetail,  } from "../views/listpost-view.js"
+import { createNewProduct, getAllProducts, getProductsByUser, removeProduct, getProductbyID, updateProduct } from "../models/post-model.js"
+import { showProductDetail, showEmptyProductDetial, updatePostDetail } from "../views/listpost-view.js"
 import { getCurrentUserInfo } from "../shared/utilities/auth-model.js"
 
 /** new product functions */
@@ -55,7 +55,7 @@ export function createPostController(createProduct){
 
 /** retrieve product functions */
 
-function displayProducts(productsDetail, productsContainer, displayOption="detail"){
+function displayProducts(productsDetail, productsContainer, displayOption="detail", currentUserId=0){
 
     if(!productsDetail.length){
        
@@ -64,7 +64,7 @@ function displayProducts(productsDetail, productsContainer, displayOption="detai
         
         productsDetail.forEach(product => {
             
-            const newProduct = showProductDetail(product, displayOption);
+            const newProduct = showProductDetail(product, displayOption, currentUserId);
 
             productsContainer.appendChild(newProduct)
         });
@@ -84,12 +84,12 @@ export async function listPostController(productsContainer, notificationInstance
         if (userId) {
             products = await getProductsByUser(userId); 
             notificationInstance.showNotification("¡Las publicaciones del usuario se han cargado exitosamente!", "success");
-            displayProducts(products, productsContainer,showOption)
+            displayProducts(products, productsContainer,showOption, userId)
             
         } else {
             products = await getAllProducts(); 
             notificationInstance.showNotification("¡Las publicaciones se han cargado exitosamente!", "success");
-            displayProducts(products, productsContainer, showOption)
+            displayProducts(products, productsContainer, showOption, 0)
         }
 
            
@@ -132,6 +132,46 @@ export async function listPostController(productsContainer, notificationInstance
       } 
 } 
 
+export async function listDetailPostController(productsContainer, notificationInstance, productId){
+    try {
+        const product = await getProductbyID(productId);
+        const user = await getCurrentUserInfo();
+
+        if (product) {
+            console.log("Producto obtenido:", JSON.stringify(product, null, 2));
+            notificationInstance.showNotification("¡Detalles del producto cargados exitosamente!", "success");
+
+            // Renderizar el detalle del producto
+            displayProducts([product], productsContainer, "detail", user.id);
+
+            // Agregar lógica para botones de actualizar y borrar si el producto pertenece al usuario actual
+            if (user.id === product.userId) {
+                const updateButton = productsContainer.querySelector(".update-btn");
+                const deleteButton = productsContainer.querySelector(".delete-btn");
+
+                // Lógica de actualización
+                if (updateButton) {
+                    updateButton.addEventListener("click", () => {
+                        handleUpdate(productId);
+                    });
+                }
+
+                // Lógica de borrado
+                if (deleteButton) {
+                    deleteButton.addEventListener("click", () => {
+                        handleDelete(productId);
+                    });
+                }
+            }
+        } else {
+            notificationInstance.handleError("El producto no existe.");
+        }
+    } catch (error) {
+        console.error("Error al obtener los detalles del producto:", error.message);
+        notificationInstance.handleError(error.message);
+    }
+}
+
 
 /** update product functions */
 async function handleUpdate(productId) {
@@ -142,11 +182,7 @@ async function handleUpdate(productId) {
 export async function updatePostController(productsContainer, notificationInstance, productId) {
     try {
 
-        if (!productId){
-            alert ("El número de producto debe ser un numero válido")
-            console ("El número de producto debe ser un numero válido")
-        }
-        const product = await getProduct(productId)
+        const product = await getProductbyID(productId)
         const user = await getCurrentUserInfo()
 
         let products;
@@ -165,6 +201,13 @@ export async function updatePostController(productsContainer, notificationInstan
             } else {
                 alert("Existen campos vacíos en el formulario.");
             }
+        });
+        
+        const cancelButton = form.querySelector(".cancel-btn");
+
+        cancelButton.addEventListener("click", () => {
+            // Redirige a la página de listado de productos
+            window.location.href = "./listPost.html";
         });
 
     } catch (error) {
@@ -228,7 +271,7 @@ const updateProductDetail = (createProduct) => {
 async function handleDelete(productId) {
     try {
 
-        const product = await getProduct(productId)
+        const product = await getProductbyID(productId)
         const user = await getCurrentUserInfo()
 
         if (user.id === product.userId){
@@ -239,7 +282,11 @@ async function handleDelete(productId) {
 
                 alert('Producto eliminado con éxito');
                 
-                location.reload();
+                if (window.location.pathname.includes("listPost.html")) {
+                    location.reload(); 
+                } else if (window.location.pathname.includes("product-detail.html")) {
+                    window.location.href = "home.html"; 
+                }
             }
         } else {
             alert("La publicación no pertence al usuario actual")

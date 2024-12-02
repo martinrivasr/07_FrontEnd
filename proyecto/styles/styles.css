@@ -393,8 +393,25 @@ body {
     transition: background-color 0.3s;
 }
 
+
+.cancel-btn {
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: #5a6268;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
 .submit-btn:hover {
     background-color: #218838;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
 }
 
 .user-mail-label {
@@ -646,4 +663,10 @@ body {
     border-color: rgb(242, 8, 8);
   }
 
-  
+  .home-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: #28a745;
+}

@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "username": "admin@test.com",
+      "password": "$2b$10$WzO0ClF0uF2TnwhU68Z74eXc7NfCCr/y7FHPyfRcR4AR5aEe4yS8.",
+      "id": 1
+    },
+    {
+      "username": "admin2@test.com",
+      "password": "$2b$10$dvHO.WfQ7BSmJ0ww2.nxTede1CbU5gDz/uFNFiVvBAAh3M2Jp8v9y",
+      "id": 2
+    },
+    {
+      "username": "admin3@test.com",
+      "password": "$2b$10$bAux0IhksXrPD3v4pLPp3ekpVz.zlQeZfcKhF/uNO8Tw9mEhEdm6.",
+      "id": 3
+    }
+  ],
+  "tweets": [
+    {
+      "productName": "TV",
+      "productDescription": "usada",
+      "price": "2000",
+      "picture": "C:\\fakepath\\imagen.jpg",
+      "transaction": "Compra",
+      "tags": [
+        "work",
+        "lifestyle",
+        "motor",
+        "mobile"
+      ],
+      "userId": 2,
+      "updatedAt": "2024-11-29T20:06:04.376Z",
+      "id": 5
+    },
+    {
+      "productName": "Lap",
+      "productDescription": "silla",
+      "price": "1234",
+      "picture": "C:\\fakepath\\imagen.jpg",
+      "transaction": "Compra",
+      "tags": [
+        "lifestyle",
+        "motor",
+        "mobile"
+      ],
+      "userId": 3,
+      "updatedAt": "2024-11-30T20:16:31.528Z",
+      "id": 7
+    },
+    {
+      "productName": "lavadora",
+      "productDescription": "lavadora usada",
+      "price": "1000",
+      "picture": "C:\\fakepath\\imagen.jpg",
+      "transaction": "Venta",
+      "tags": [
+        "lifestyle",
+        "motor"
+      ],
+      "userId": 1,
+      "updatedAt": "2024-12-02T01:56:24.177Z",
+      "id": 8
+    },
+    {
+      "productName": "Lap",
+      "productDescription": "Lap",
+      "price": "111",
+      "picture": "C:\\fakepath\\imagen.jpg",
+      "transaction": "Venta",
+      "tags": [
+        "lifestyle",
+        "motor"
+      ],
+      "userId": 2,
+      "updatedAt": "2024-12-02T02:43:09.796Z",
+      "id": 9
+    }
+  ]
+}

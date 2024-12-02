@@ -36,3 +36,91 @@
                 <button type="submit" class="submit-btn">Dar de Alta</button>
             </form>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        export const showProductDetail = (productDetail, showOption="detail") => {
+
+    const newProductDetail = document.createElement('div');
+    newProductDetail.classList.add('product');
+
+    const creationDate = new Date(productDetail.updatedAt);
+
+    const tagsHTML = productDetail.tags
+        .map(tag => `<span class="tag">${tag}</span>`)
+        .join('');
+
+    
+
+    const ownerName = productDetail.user?.username || "Usuario desconocido";
+
+
+    const productLink = document.createElement('a');
+    productLink.setAttribute("href", `./product-detail.html?id=${productDetail.id}`);
+    productLink.style.textDecoration = "none";
+
+    productLink.innerHTML = `
+        <img src="/assets/imagen.jpg" alt="Foto del producto" class="product-image">
+        <div class="product-details">
+            <h4 class="product-name">Producto: ${productDetail.productName}</h4>
+            <h5 class="product-postdate">Fecha de publicación: ${creationDate.toLocaleDateString()}</h5>
+            <p class="product-owner">Propietario: ${ownerName}</p>
+            <p class="product-description">Descripción: ${productDetail.productDescription}</p>
+            <p class="product-price">Precio: ${productDetail.price}</p>
+            <p class="product-transaction">Transacción: ${productDetail.transaction}</p>
+            <div class="product-tags">
+                ${tagsHTML}
+            </div>
+        </div>
+    `;
+
+
+   if (showOption === "detail"){
+        const productActions = document.createElement('div');   
+        productActions.classList.add('product-actions');
+        const buttonText = productDetail.transaction === "Venta" ? "Comprar" : "Vender";
+        const actionButton = document.createElement('button'); 
+        actionButton.classList.add('transaction-btn');
+        actionButton.textContent = buttonText;
+        
+        productActions.appendChild(actionButton);   
+
+        newProductDetail.appendChild(productLink); 
+        newProductDetail.appendChild(productActions); 
+   } else {
+        const productActions = addActionsButtons(productDetail);    
+        newProductDetail.appendChild(productLink);
+        newProductDetail.appendChild(productActions);
+   }
+    return newProductDetail;
+};
+
+export const addActionsButtons = (productDetail) => {
+    const productActions = document.createElement('div');
+    productActions.classList.add('product-actions');
+    const updateButton = document.createElement('button');
+    updateButton.classList.add('update-btn');
+    updateButton.textContent = "Modificar";
+    updateButton.setAttribute('data-id', productDetail.id);
+    
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-btn');
+    deleteButton.textContent = "Borrar";
+    deleteButton.setAttribute('data-id', productDetail.id);
+
+    productActions.appendChild(updateButton);    
+    productActions.appendChild(deleteButton);
+
+    return productActions; 
+};
